@@ -1,0 +1,6 @@
+tupla = ('Pao', 1, 'Leite', 3, 'Carne', 30, 'Suco', 5)
+print('Listagem de precos!')
+print(f'{tupla[0]}', f'R${tupla[1]}')
+print(f'{tupla[2]}', f'R${tupla[3]}')
+print(f'{tupla[4]}', f'R${tupla[5]}')
+print(f'{tupla[6]}', f'R${tupla[7]}')

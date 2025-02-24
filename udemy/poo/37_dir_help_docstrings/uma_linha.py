@@ -1,0 +1,1 @@
+"""O que meu modulo faz""" #A recomendacao da PEP8 e que as docstrings estejam entre aspas duplas

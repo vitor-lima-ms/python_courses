@@ -1,0 +1,133 @@
+- Tipo de tipagem: dinamica e forte
+    - Dinamica: Python ja sabe o tipo da informacao que estamos passando para ele
+    - Forte: Nao converte um tipo em outro automaticamente (so converte quando utilizamos funcoes especificas e se for possivel)
+- Tipos primitivos imutaveis
+    - Imutaveis --> Nao conseguimos mudar
+        - Podemos atribuir o/a str/int/float/bool de uma variavel a outra para manipular, mas o valor original, atribuido a primeira variavel, se mantem --> Por isso imutavel
+    - strings
+        - Caracteres colocados entre aspas '' ou ""
+        - Caractere de escape --> \ --> Faz com que o interpretador ignore o proximo caractere --> Permite printar aspas dentro de aspas (e.g., "Vitor \"Lima\"")
+        - r --> Mostra o caractere de escape --> print(r"Vitor \"Lima\"")
+        - Uma maneira mais facil é utilzar aspas duplas dentro de aspas simples ou o contrario
+        - split
+            - Divide uma string a partir de um caractere separador --> Padrao --> Espaco
+                - O caractere separador pode ser uma composicao --> ', '
+            - Retorna uma lista
+        - strip
+            - Remove espacos do comeco e fim
+            - rstrip --> Remove apenas espacos a direita
+            - lstrip --> Remove apenas espacos a esquerda
+        - join
+            - Une strings
+            - Exemplo
+                string_unida = 'separador'.join(string)
+    - int e float
+        - int = Numeros inteiros positivos ou negativos ou 0
+        - float = Numeros positivos ou negativos ou 0, com ponto flutuante
+        - Classe type
+            - E uma classe, nao uma funcao --> A sintaxe confunde pois classes no geral comecam com letra maiuscula e são callable 
+            - Retorna o tipo
+        - Imprecisao de floats
+            - Devido a forma como o Python, e outras linguagens, armazenam alguns numeros com ponto flutuante na memoria, as vezes e possivel observar uma imprecisao de casas decimais mesmo em operacoes que retornariam numeros precisos
+            - Exemplo
+                num1 = 0.1
+                num2 = 0.7
+                num3 = num1 + num2
+                print(num3) --> 0.7999999999...
+            - Formas de contornar
+                - funcao round(float, n_casas_decimais) --> Mantem o tipo do float
+                - import decimal.Decimal
+                    - Converte corretamente uma string em float
+    - bool
+        - Apenas dois valores: True ou False
+        - Retornado por operadores lógicos (e.g., ==, >, < etc.)
+- Tipos nao primitivos mutaveis
+    - Listas
+        - Suporta varios valores de qualquer tipo
+        - Conhecimentos reutilizaveis --> Indices, fatiamento, split, strip e join
+        - Se estiver vazia --> falsy
+        - Metodos uteis:
+            - append --> Adiciona um elemento no final da listas
+                - Nao requer tanto processamento uma vez que nenhum indice anterior ao elemento adicionado sera alterado
+            - insert --> Insere um elemento em determinado indice
+            - pop --> Remove o ultimo item, por padrao, ou em um determinado indice 
+                - Podemos armazenar o ultimo valor removido em uma variavel
+            - del --> Deleta o elemento de um determinado indice
+                - E importante se atentar com esses processos, pois dependendo do local de insercao ou remocao, muitos indices terao que ser alterados --> Causa de lentidao
+                - O mais interessante de se fazer com listas é remover ou colocar dados no final dela
+            - clear --> Limpa toda a lista
+            - +
+                - Cria uma lista igual a concatenacao de outras listas
+            - extend
+                - Altera a lista original, concatenando uma outra lista passada como argumento --> Nao retorna uma lista --> Retorna None
+            - .sort() --> Ordena a lista original
+            - sorted(lista) --> Cria uma shallow copy da lista ordenada
+    - Dicionarios
+        - Estrutura de dados com par de chave e valor
+        - Chaves podem ser criadas com qualquer tipo de dado imutavel
+            - Facilita o acesso aos valores
+            - Precisam existir, se nao acontece um erro
+            - Se criarmos chaves iguais, o ultimo valor sempre sera usado
+        - O valor pode ser qualquer valor
+        - Podemos apagar as chaves e seus respectivos valores com o del
+        - Metodo .get --> Tenta obter uma chave --> Se nao existir, retorna None como valor padrao --> Podemos escolher um outro valor
+        - len() --> Retorna quantas chaves
+        - .keys() --> Retorna as chaves do dicionarios --> Podemos converter o tipo retornado para tupla e/ou lista
+        - .values() --> Retorna os valores do dicionarios --> Podemos converter o tipo retornado para tupla e/ou lista
+        - .items() --> Retorna tuplas com chave e valor --> Podemos converter o tipo retornado para tupla e/ou lista
+        - .setdefalut() --> Adiciona um valor se a chave nao existe
+        - .pop() --> Apaga a chave mas salva o valor em outra variavel
+        - .popitem() --> Elimina o ultimo item mas salva em uma variavel
+        - .update() --> Modifica valores, cria novas chaves
+            - Podemos passar uma tupla/lista como par de chave e valor
+        - Empacotamento e desempacotamento de dicionarios
+            - Podemos desempacotar os valores dessa forma --> a, b = dicionario.values()
+                - Se nao passarmos o .values() --> Desempacota as chaves
+            - {**dicionario} -> Desempacota chave e valor dentro de outro dicionario --> Podemos extrair mais de um dicionario dentro de outro
+            - kwargs (keyword arguments)
+                - Sempre usar **
+                - funcao(kwargs1=a, kwargs2=b)
+                    - Empacotando os kwargs
+                - funcao(**dicionario)
+                    - Desempacotando as chaves e valores do dicionario
+    - Sets
+        - = Conjuntos da matemática --> Representados graficamente pelo diagrama de Venn
+        - Sao mutaveis porem so aceitam valores imutaveis
+        - Para criar um set --> set(iteravel) ou {1, 2, 3 ...}
+            - Usam chaves mas nao tem par de chave e valor --> Diferenca para os dicionarios
+            - Nao podemos inicia-lo com {} --> Isso cria um dicionario
+        - Sao muito eficientes para remover valores dulicados de iteraveis --> Seus valores serao sempre unicos
+        - Nao tem indices
+        - Nao garantem a ordem
+        - Sao iteraveis
+        - Por esses motivos, sao mais eficientes em termos computacionais
+        - Metodos uteis
+            - .add() --> Adiciona apenas um elemento por vez
+            - .update() --> Permite adicionar mais de um elemento por vez, mas temos que ter o cuidado para passar um iteravel que retorne o valor desejado
+            - .clear() --> Limpa todo o set
+            - .discard() --> Eliminamos um valor desejado
+            - Podemos usar in set
+        - Operadores importantes
+            - Uniao --> |
+            - Interseccao --> &
+            - Diferenca --> Itens presentes apenas no set da esquerda --> -
+            - Diferenca simetrica --> Itens que nao estao em ambos --> ^
+        - Exemplo de uso
+            - Buscar uma letra no input do usuario
+    - Cuidados com dados mutaveis
+        - Atribuir uma lista que ja esteja atribuida a uma variavel a outra variavel nao cria uma copia, como nos dados imutaveis, e sim um conexao
+            - lista_a = [1, 2, 3]
+            - lista_b = lista_a --> Ambos apontam para o mesmo endereco de memoria --> Isso implica em, se mudarmos qualquer coisa na lista_a, a lista_b tambem sera alterada e vice-versa
+            - Para criar uma copia --> Utilizar o metodo .copy()
+        - shallow e deep copy
+            - .copy() em listas e dicionarios retorna um shallow copy
+                - shallow copy --> Tudo que for imutavel sera copiado para a copia --> Mas se tiver um valor mutavel, os dois dicionarios irao compartilhar o valor mutavel --> Alterar em um, altera no outro
+                - deep copy --> import copy --> copy.deepcopy() --> Todos os valores serao copiados e nenhum compartilhado
+- Tipos nao primitivos imutaveis
+    - Tuplas
+        - Basicamente listas imutaveis
+        - Tem todos os metodos de lista exceto os metodos que alteram valores
+        - Mais eficiente que a lista --> Tem um tamanho pré-definido --> Acho que pode ser considerada como o array do curso do Galego --> A lista na verdade e uma linked list
+        - Se nao formos alterar elementos --> Usar tupla
+        - Podemos converter uma lista para uma tupla e vice-versa --> tuple() e list()
+    - range()

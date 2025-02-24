@@ -1,0 +1,34 @@
+- while
+    - Executa uma acao enquanto uma condicao for atendida
+    - Loop infinito --> Quando a condicao do while esta sempre sendo atendida
+    - break --> Procura o laco mais proximo e o interrompe
+    - continue --> Volta imediatamente ao inicio do laco
+    - Lacos internos (while dentro de um while)
+    - while else
+        - Quando o laco e executado completamente, sem que saiamos forcadamente, alcancamos um else
+            while ...:
+                ...
+            else:
+                ...
+            - Quando saimos do laco forcadamente, com um break por exemplo, esse else nao e alcancado
+            - Exemplo pratico
+                - Procurar um espaco em uma string --> Se encontrar -> break --> Se nao encontrar podemos utilizar o else para avisar com um print('Nao encontrei espacos')
+- for in
+    - Estrutura de repeticao para valores finitos
+    - for variavel_iteracao in variavel_iteravel ou for variavel_iteravel in range(inicio, fim, passo)
+        - Se somente 1 argumento for passado para o range(), ele considera esse argumento como o fim
+    - Como o for funciona
+        - Objetos iteraveis --> Apresentam o metodo .__iter__
+        - Iterador --> Objeto que consegue iterar sobre um objeto iteravel
+        - next --> Metodo que entrega um item por vez
+        - Exemplo:
+            nome = 'Vitor' --> Objeto iteravel
+            print(nome.__next__) --> 'V'
+            print(nome.__next__) --> 'I'
+            print(nome.__next__) --> 'T'
+            print(nome.__next__) --> 'O'
+            print(nome.__next__) --> 'R'
+            print(nome.__next__) --> Erro, pois o objeto iteravel acabou
+
+            O for reconhece esse erro e para a iteracao sem exibir esse erro na saida padrao
+    - break, continue e else tambem funcionam com o for
